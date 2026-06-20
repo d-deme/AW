@@ -1,0 +1,63 @@
+# ------------------------------
+# Core / OS / Editor
+# ------------------------------
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+.vscode/
+.idea/
+
+# ------------------------------
+# Environment Variables (CRITICAL)
+# ------------------------------
+.env
+.env.local
+.env.*.local
+
+# ------------------------------
+# Dependency folders (MASSIVE)
+# ------------------------------
+node_modules/
+
+# ------------------------------
+# Build outputs (Generated, not source)
+# ------------------------------
+dist/
+build/
+*.tsbuildinfo
+
+# ------------------------------
+# Vite / Next.js / React caches
+# ------------------------------
+.vite/
+.vite-temp/
+.cache/
+
+# ------------------------------
+# Backend specific (Node.js / PostgreSQL)
+# ------------------------------
+# Don't commit compiled JS if you build from TS
+Backend/dist/
+# PostgreSQL dump files
+*.sql
+*.dump
+
+# ------------------------------
+# Frontend / CMS specific
+# ------------------------------
+# Generated static assets
+CMS/dist/
+Frontend/dist/
+
+# ------------------------------
+# Logs & Temporary analysis files
+# ------------------------------
+*.log
+
+# ------------------------------
+# Misc
+# ------------------------------
+*.tgz
+.vercel
+*.pem
