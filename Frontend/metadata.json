@@ -1,0 +1,6 @@
+{
+  "name": "Adama City Official Website",
+  "description": "The official digital gateway for Adama City residents, businesses, visitors, and investors. Access government services, city news, and investment opportunities.",
+  "requestFramePermissions": ["geolocation", "camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

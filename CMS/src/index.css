@@ -1,0 +1,362 @@
+@import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-brand-navy: #0A1F44;
+  --color-brand-teal: #00E5FF;
+  --color-brand-teal-dark: #00B8CC;
+}
+
+@layer utilities {
+  .animate-spin-slow {
+    animation: spin 3s linear infinite;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* CMS Rich Text Editor Styles */
+.quill-container .ql-container {
+  min-height: 250px;
+  max-height: 500px;
+  overflow-y: auto;
+  border-bottom-left-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+  font-family: inherit;
+}
+
+.quill-container .ql-toolbar {
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+  border-color: #e5e7eb !important;
+  background-color: #f9fafb;
+}
+
+.quill-container .ql-container.ql-snow {
+  border-color: #e5e7eb !important;
+}
+
+/* Ensure rich text content in preview/frontend looks good */
+.rich-text-content h1 { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; color: #0A1F44; }
+.rich-text-content h2 { font-size: 1.5rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #0A1F44; }
+.rich-text-content h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.5rem; color: #0A1F44; }
+.rich-text-content p { margin-bottom: 1rem; line-height: 1.6; }
+.rich-text-content ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1rem; }
+.rich-text-content ol { list-style-type: decimal; margin-left: 1.5rem; margin-bottom: 1rem; }
+.rich-text-content a { color: #00897B; text-decoration: underline; }
+.rich-text-content img { max-width: 100%; height: auto; border-radius: 0.5rem; margin: 1rem 0; }
+
+/* Subtle 3D scale-up hover animation with soft shadow transition */
+.admin-module-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.admin-module-card:hover {
+  transform: translateY(-8px) scale(1.03) rotateX(2deg) rotateY(1deg);
+  box-shadow: 0 25px 35px -5px rgba(0, 0, 0, 0.35), 0 12px 12px -5px rgba(0, 229, 255, 0.08);
+  border-color: rgba(0, 229, 255, 0.3) !important;
+}
+
+/* Custom inline clamp formatter for rich-text previews inside cards */
+.rich-text-preview {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.rich-text-preview p,
+.rich-text-preview h1,
+.rich-text-preview h2,
+.rich-text-preview h3,
+.rich-text-preview h4,
+.rich-text-preview h5,
+.rich-text-preview h6,
+.rich-text-preview ul,
+.rich-text-preview ol,
+.rich-text-preview li,
+.rich-text-preview blockquote {
+  display: inline !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  color: inherit !important;
+}
+
+/* Ensure spaces are maintained between inline siblings */
+.rich-text-preview p::after,
+.rich-text-preview h1::after,
+.rich-text-preview h2::after,
+.rich-text-preview h3::after,
+.rich-text-preview h4::after,
+.rich-text-preview li::after {
+  content: " ";
+}
+
+/* Hide bulk images inside excerpt previews */
+.rich-text-preview img,
+.rich-text-preview video,
+.rich-text-preview iframe {
+  display: none !important;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ==========================================
+   GLOBAL DARK MODE OVERRIDES
+   ========================================== */
+
+.dark {
+  color-scheme: dark;
+}
+
+/* Ensure smooth transition of background and text colors */
+body, html {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+  background-color: #0b1329 !important;
+  color: #f1f5f9 !important;
+}
+
+/* Typography Overrides */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: #ffffff !important;
+}
+
+.dark .text-brand-navy {
+  color: #00E5FF !important;
+}
+
+.dark .text-slate-900,
+.dark .text-gray-900 {
+  color: #ffffff !important;
+}
+
+.dark .text-slate-800,
+.dark .text-gray-800 {
+  color: #f1f5f9 !important;
+}
+
+.dark .text-slate-700,
+.dark .text-gray-700,
+.dark .text-slate-600,
+.dark .text-gray-600 {
+  color: #cbd5e1 !important;
+}
+
+.dark .text-slate-500,
+.dark .text-gray-500,
+.dark .text-slate-400,
+.dark .text-gray-400 {
+  color: #94a3b8 !important;
+}
+
+/* Card and Column Container Backgrounds */
+.dark .bg-white {
+  background-color: #0f172a !important; /* Slate 900 for dark card bases */
+  color: #f1f5f9 !important;
+}
+
+.dark .bg-slate-50,
+.dark .bg-gray-50 {
+  background-color: #0b1329 !important; /* Base frame color */
+}
+
+.dark .bg-slate-100,
+.dark .bg-gray-100 {
+  background-color: #1e293b !important; /* Highlight items */
+}
+
+.dark .bg-slate-50\/40,
+.dark .bg-slate-50\/50,
+.dark .bg-gray-50\/50 {
+  background-color: rgba(30, 41, 59, 0.4) !important;
+}
+
+.dark .bg-white\/70 {
+  background-color: rgba(15, 23, 42, 0.8) !important;
+}
+
+/* Border adjustments */
+.dark .border-slate-100,
+.dark .border-slate-200,
+.dark .border-gray-100,
+.dark .border-gray-200,
+.dark .border-slate-205 {
+  border-color: rgba(148, 163, 184, 0.15) !important;
+}
+
+/* Input & Form Control dark adaptivity */
+.dark input, 
+.dark textarea, 
+.dark select {
+  background-color: #0f172a !important;
+  color: #f1f5f9 !important;
+  border-color: rgba(148, 163, 184, 0.15) !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #64748b !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+.dark input:focus, 
+.dark textarea:focus, 
+.dark select:focus {
+  border-color: #00E5FF !important;
+  outline: none;
+}
+
+/* Quill Richtext Previews inside Dark Mode */
+.dark .rich-text-content h1,
+.dark .rich-text-content h2,
+.dark .rich-text-content h3 {
+  color: #ffffff !important;
+}
+
+.dark .rich-text-content p {
+  color: #cbd5e1 !important;
+}
+
+/* Admin Panel Modules Overrides */
+.dark .admin-module-card {
+  background-color: #0f172a !important;
+  border-color: rgba(0, 229, 255, 0.15) !important;
+  color: #ffffff !important;
+}
+
+.dark .admin-module-card:hover {
+  box-shadow: 0 25px 35px -5px rgba(0, 0, 0, 0.6), 0 12px 12px -5px rgba(0, 229, 255, 0.12) !important;
+  border-color: rgba(0, 229, 255, 0.4) !important;
+}
+
+/* Rich text Editor inside Dark Mode */
+.dark .quill-container .ql-toolbar {
+  border-color: rgba(148, 163, 184, 0.15) !important;
+  background-color: #0b1329 !important;
+}
+
+.dark .quill-container .ql-toolbar .ql-stroke {
+  stroke: #cbd5e1 !important;
+}
+
+.dark .quill-container .ql-toolbar .ql-fill {
+  fill: #cbd5e1 !important;
+}
+
+.dark .quill-container .ql-toolbar .ql-picker {
+  color: #cbd5e1 !important;
+}
+
+.dark .quill-container .ql-container {
+  border-color: rgba(148, 163, 184, 0.15) !important;
+  background-color: #0f172a !important;
+  color: #f1f5f9 !important;
+}
+
+.dark .quill-container .ql-container.ql-snow {
+  border-color: rgba(148, 163, 184, 0.15) !important;
+}
+
+/* ==========================================
+   INTERACTIVE REFINEMENTS & GLOBAL HOVERS
+   ========================================== */
+
+/* Smooth fluid transitions for elements on dynamic theme change or interactive trigger */
+body, html, div, button, input, select, textarea, span, tr, td, table, section, nav, header, footer {
+  transition-property: background-color, border-color, text-decoration-color, fill, stroke, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Scrollbars styling matching the theme environment */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.2);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.4);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Multi-theme Row & Interactive Item Hover highlights */
+tr.hover\:bg-slate-50:hover, 
+tr.hover\:bg-gray-50:hover {
+  background-color: rgba(0, 229, 255, 0.05) !important;
+}
+
+.dark tr.hover\:bg-slate-50:hover,
+.dark tr.hover\:bg-gray-50:hover,
+.dark tr.hover\:bg-slate-50\/40:hover {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+/* Standard cards hover lifted scale transition */
+.hover-lift {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 16px 30px -6px rgba(0, 229, 255, 0.15), 0 8px 16px -8px rgba(0, 0, 0, 0.05);
+}
+
+.dark .hover-lift:hover {
+  box-shadow: 0 16px 30px -6px rgba(0, 229, 255, 0.35), 0 8px 16px -8px rgba(0, 0, 0, 0.6);
+  border-color: rgba(0, 229, 255, 0.3) !important;
+}
+
+/* Interactive focus ring enhancement for text inputs & drop downs */
+.dark input:focus, .dark textarea:focus, .dark select:focus {
+  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.15) !important;
+}
+
+
+
