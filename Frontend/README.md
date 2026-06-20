@@ -1,7 +1,3 @@
-<div align="center">
-<img width="1200" height="475" alt="AW" 
-
-
 ## Run Locally
 
 **Prerequisites:**  Node.js
